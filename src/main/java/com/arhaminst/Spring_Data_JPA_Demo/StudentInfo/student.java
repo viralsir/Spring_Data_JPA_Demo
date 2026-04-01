@@ -1,11 +1,13 @@
 package com.arhaminst.Spring_Data_JPA_Demo.StudentInfo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+// @Table(name="student_info")
 public class student
 {
+
+
     @Id
     String rollno;
 

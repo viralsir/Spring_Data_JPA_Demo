@@ -3,6 +3,7 @@ package com.arhaminst.Spring_Data_JPA_Demo.StudentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -41,5 +42,42 @@ public class StudentController
         
         return studentService.searchstudent(studentobj);
     }
+
+    @GetMapping("/search/name")
+    public ArrayList<student> searchStudentByName(@RequestParam("name") String name)
+    {
+         return studentService.searchbyname(name);
+    }
+
+    @GetMapping("/search/name/contain")
+    public ArrayList<student> searchStudentByNameContaining(@RequestParam("name") String name)
+    {
+        return studentService.searchby_Containing_Name(name);
+    }
+
+    @GetMapping("/view/maths")
+    public ArrayList<student> viewbymathsge(@RequestParam("mark") int mark){
+        return studentService.viewStudentByMaths(mark);
+    }
+
+    @GetMapping("/view/pass")
+    public ArrayList<student> viewbyPass(){
+        return studentService.passStudents();
+    }
+
+    @GetMapping("/view/fail")
+    public ArrayList<student> viewbyFail(){
+        return studentService.failStudents();
+    }
+    @GetMapping("/view/maths/top")
+    public ArrayList<student> viewTop3Maths(){
+        return studentService.top3Maths();
+    }
+
+//    @GetMapping("/view/name/asc")
+//    public ArrayList<student> viewAllByNameAsc()
+//    {
+//        return studentService.viewAllByNameAsc();
+//    }
 
 }
