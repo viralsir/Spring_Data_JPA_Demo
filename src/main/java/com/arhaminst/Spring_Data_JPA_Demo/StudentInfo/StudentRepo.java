@@ -1,6 +1,7 @@
 package com.arhaminst.Spring_Data_JPA_Demo.StudentInfo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,8 +20,11 @@ public interface StudentRepo extends JpaRepository<student,String>
     public ArrayList<student> findByNameContaining(String name);
 //    public ArrayList<student> findAllOrderByName();
     public ArrayList<student> findByMathsGreaterThanOrderByMathsDesc(int mark);
+
     public ArrayList<student> findByMathsGreaterThanAndScienceGreaterThan(int maths_criteria,int science_crietria);
     public ArrayList<student> findByMathsLessThanOrScienceLessThan(int maths_criteria,int science_criteria);
     public ArrayList<student> findTop3ByOrderByMathsDesc();
+    public ArrayList<student> findByStdandardStdandard(int std);
+
 
 }

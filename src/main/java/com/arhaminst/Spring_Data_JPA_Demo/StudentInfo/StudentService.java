@@ -16,6 +16,7 @@ public class StudentService
 
     public String addStudent(student studentobj)
     {
+
         studentRepo.save(studentobj);
         return "Record is successfully saved";
     }
@@ -92,4 +93,11 @@ public class StudentService
     public  ArrayList<student> top3Maths(){
         return studentRepo.findTop3ByOrderByMathsDesc();
     }
+
+    public ArrayList<student> viewStudentsByStandard(int std)
+    {
+        return studentRepo.findByStdandardStdandard(std);
+    }
+
+
 }

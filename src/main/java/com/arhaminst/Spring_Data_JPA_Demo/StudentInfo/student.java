@@ -15,14 +15,26 @@ public class student
     int maths;
     int science;
 
+    @ManyToOne
+    private  StandardInfo stdandard;;
+
+    public StandardInfo getStdandard() {
+        return stdandard;
+    }
+
+    public void setStdandard(StandardInfo stdandard) {
+        this.stdandard = stdandard;
+    }
+
     public student() {
     }
 
-    public student(String rollno, String name, int maths, int science) {
+    public student(String rollno, String name, int maths, int science,StandardInfo standardInfo) {
         this.rollno = rollno;
         this.name = name;
         this.maths = maths;
         this.science = science;
+        this.stdandard=standardInfo;
     }
 
     public String getRollno() {

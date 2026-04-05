@@ -15,9 +15,13 @@ public class StudentController
     @Autowired
     StudentService studentService;
 
-    @PostMapping
-    public String addStudent(@RequestBody student studentobj)
+    @Autowired
+    StandarService standarService;
+
+    @PostMapping("/std/{std}")
+    public String addStudent(@RequestBody student studentobj,@PathVariable("std") int std)
     {
+        studentobj.setStdandard(standarService.viewStandardByStd(std));
         return studentService.addStudent(studentobj);
     }
 
@@ -72,6 +76,11 @@ public class StudentController
     @GetMapping("/view/maths/top")
     public ArrayList<student> viewTop3Maths(){
         return studentService.top3Maths();
+    }
+
+    @GetMapping("/view/std/{std}")
+    public ArrayList<student> viewStudentsByStd(@PathVariable("std") int std){
+         return studentService.viewStudentsByStandard(std);
     }
 
 //    @GetMapping("/view/name/asc")
