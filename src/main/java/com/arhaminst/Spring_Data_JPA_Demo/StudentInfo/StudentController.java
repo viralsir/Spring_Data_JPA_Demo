@@ -21,7 +21,12 @@ public class StudentController
     @PostMapping("/std/{std}")
     public String addStudent(@RequestBody student studentobj,@PathVariable("std") int std)
     {
-        studentobj.setStdandard(standarService.viewStandardByStd(std));
+        StandardInfo standardInfo=standarService.viewStandardByStd(std);
+        standardInfo.addStudent(studentobj);
+        standarService.addStudent(standardInfo);
+        studentobj.setStdandard(standardInfo);
+
+
         return studentService.addStudent(studentobj);
     }
 

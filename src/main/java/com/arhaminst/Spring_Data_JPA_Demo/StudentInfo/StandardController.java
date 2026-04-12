@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -13,6 +14,9 @@ public class StandardController
 
     @Autowired
     private StandarService standarService;
+
+    @Autowired
+    private StudentService studentService;
 
     @PostMapping
      public String addStandard(@RequestBody StandardInfo standardInfo)
@@ -30,4 +34,12 @@ public class StandardController
      {
          return standarService.viewStandardByStd(std);
      }
+
+    @GetMapping("/{std}/students")
+    public List<student> getStudentsByStd(@PathVariable("std") int std){
+
+        // return studentService.viewStudentsByStandard(std);
+        return standarService.viewStudentsByStd(std);
+     }
+
 }
